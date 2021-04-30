@@ -8,7 +8,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def welcome():
-    return "Welcome to the Peanuts Translating API"
+    return "Welcome to the Peanuts Translating API\nUsage: /encode?value="
 
 @app.route('/encode')
 @cross_origin()
