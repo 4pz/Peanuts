@@ -97,6 +97,7 @@ def peanuts(text):
 
     return separator.join(intersperse(dated, "-"))
 
+#print(peanuts("none"))
 
 '''
 def undo_peanuts(text):
