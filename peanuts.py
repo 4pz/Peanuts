@@ -1,6 +1,6 @@
 from datetime import date
 import itertools
-from autocorrect import Speller
+#from autocorrect import Speller
 
 alphabet = {
     "a": 1,
@@ -101,7 +101,7 @@ def peanuts(text):
 #print(peanuts("none"))
 
 
-def undo_peanuts(text):
+'''def undo_peanuts(text):
     new_text = text.split("-")
     for i in range(len(new_text)):
         if new_text[i] == "&":
@@ -144,42 +144,4 @@ def undo_peanuts(text):
 
 
 #print(undo_peanuts(peanuts("hello")))
-
-'''
-def undo_peanuts(text):
-    new_text = text.split("-")
-    for i in range(len(new_text)):
-        if new_text[i] == "&":
-            new_text[i] = " "
-        elif "#" in new_text[i]:
-            new_text[i] = get_key(len(new_text[i]))
-
-    shift = separator.join(str(date.today()).split("-"))
-    split_shift = [i for i in shift]
-    cycle = itertools.cycle(split_shift)
-
-    print(new_text)
-
-    new_list = []
-    for n in range(len(new_text)):
-        item = int(next(cycle))
-        try:
-            if alphabet.get(new_text[n]) + item < 13:
-                corr_number = alphabet.get(new_text[n]) + item
-                corr_number1 = alphabet.get(new_text[n]) - item
-                new_text[n] = get_key(corr_number)
-                new_list.append(get_key(corr_number1))
-            else:
-                corr_number = alphabet.get(new_text[n]) - item
-                new_text[n] = get_key(corr_number)
-        except:
-            new_text[n] = new_text[n]
-
-    print(new_text)
-    print(new_list)
-    #reverse date shift
-
-undo_peanuts(peanuts("hello, world"))
-print(reflect("hello, world"))
-print(date_shift("hello, world"))
 '''
