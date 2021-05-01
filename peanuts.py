@@ -89,7 +89,7 @@ def peanuts(text):
     dated = date_shift(text)
     for n in range(len(dated)):
         try:
-            dated[n] = alphabet.get(dated[n]) * "#"
+            dated[n] = alphabet.get(dated[n]) * "1"
         except:
             if dated[n] == " ":
                 dated[n] = "&"
@@ -105,7 +105,7 @@ def undo_peanuts(text):
     for i in range(len(new_text)):
         if new_text[i] == "&":
             new_text[i] = " "
-        elif "#" in new_text[i]:
+        elif "1" in new_text[i]:
             new_text[i] = get_key(len(new_text[i]))
 
     writing = new_text
@@ -142,4 +142,4 @@ def undo_peanuts(text):
     return spell(separator.join(split_text))
 
 
-#print(undo_peanuts(peanuts("hello")))
+#print(undo_peanuts("################-##############-################"))
