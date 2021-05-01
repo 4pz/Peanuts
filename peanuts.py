@@ -1,6 +1,6 @@
 from datetime import date
 import itertools
-#from autocorrect import Speller
+from autocorrect import Speller
 
 alphabet = {
     "a": 1,
@@ -100,8 +100,7 @@ def peanuts(text):
 
 #print(peanuts("none"))
 
-
-'''def undo_peanuts(text):
+def undo_peanuts(text):
     new_text = text.split("-")
     for i in range(len(new_text)):
         if new_text[i] == "&":
@@ -144,4 +143,3 @@ def peanuts(text):
 
 
 #print(undo_peanuts(peanuts("hello")))
-'''
