@@ -18,7 +18,7 @@ def encode():
 
 @app.route('/decode')
 @cross_origin()
-def encode():
+def decode():
     value = request.args.get('value')
     return undo_peanuts(value)
 
