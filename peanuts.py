@@ -1,5 +1,6 @@
 from datetime import date
 import itertools
+from autocorrect import Speller
 
 alphabet = {
     "a": 1,
@@ -38,7 +39,7 @@ def get_key(val):
         if val == value:
             return key
 
-    return "key doesn't exist"
+    raise ValueError("Key Doesn't Exist")
 
 
 def intersperse(lst, item):
@@ -98,6 +99,51 @@ def peanuts(text):
     return separator.join(intersperse(dated, "-"))
 
 #print(peanuts("none"))
+
+
+def undo_peanuts(text):
+    new_text = text.split("-")
+    for i in range(len(new_text)):
+        if new_text[i] == "&":
+            new_text[i] = " "
+        elif "#" in new_text[i]:
+            new_text[i] = get_key(len(new_text[i]))
+
+    writing = new_text
+
+    shift = separator.join(str(date.today()).split("-"))
+    split_shift = [i for i in shift]
+    cycle = itertools.cycle(split_shift)
+
+    for n in range(len(writing)):
+        item = int(next(cycle))
+        try:
+            if alphabet.get(writing[n]) + item > 26:
+                corr_number = alphabet.get(writing[n]) + item
+                writing[n] = get_key(corr_number)
+            else:
+                corr_number = alphabet.get(writing[n]) - item
+                writing[n] = get_key(corr_number)
+        except:
+            writing[n] = writing[n]
+
+    split_text = [char for char in writing]
+    for letter in range(len(split_text)):
+        try:
+            if alphabet.get(split_text[letter]) > 14:
+                corr_number = alphabet.get(split_text[letter]) - 13
+                split_text[letter] = get_key(corr_number)
+            elif alphabet.get(split_text[letter]) < 13:
+                corr_number = alphabet.get(split_text[letter]) + 13
+                split_text[letter] = get_key(corr_number)
+        except:
+            split_text[letter] = split_text[letter]
+
+    spell = Speller()
+    return spell(separator.join(split_text))
+
+
+#print(undo_peanuts(peanuts("hello")))
 
 '''
 def undo_peanuts(text):

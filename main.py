@@ -1,5 +1,5 @@
 from flask import Flask, request
-from peanuts import peanuts
+from peanuts import peanuts, undo_peanuts
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
@@ -15,6 +15,12 @@ def welcome():
 def encode():
     value = request.args.get('value')
     return peanuts(value)
+
+@app.route('/decode')
+@cross_origin()
+def encode():
+    value = request.args.get('value')
+    return undo_peanuts(value)
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
