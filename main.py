@@ -16,11 +16,11 @@ def encode():
     value = request.args.get('value')
     return peanuts(value)
 
-@app.route('/decode')
+'''@app.route('/decode')
 @cross_origin()
 def encode():
     value = request.args.get('value')
-    return undo_peanuts(value)
+    return undo_peanuts(value)'''
 
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
